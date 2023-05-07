@@ -1,24 +1,32 @@
-CC=g++
-CFLAGS=-Wall -Wextra -std=c++11 -fPIC
-LDFLAGS=-shared
+# Makefile for my_program
 
-SRCS=main.cpp
-OBJS=$(SRCS:.cpp=.o)
-SHARED_LIB=libanteater_sw.so
+# Compiler flags
+CXXFLAGS := -std=c++11 -Wall -Wextra -pedantic
 
-.PHONY: all shared object clean
+# Include directories
+INCLUDES := -I.
 
-all: shared object
+# Libraries (if any)
+LIBS :=
 
-shared: $(SHARED_LIB)
+# Source files
+SRCS := main.cpp
 
-$(SHARED_LIB): $(OBJS)
-	$(CC) $(LDFLAGS) -o $@ $^
+# Object files
+OBJS := $(SRCS:.cpp=.o)
 
-object: $(OBJS)
+# Target executable
+TARGET := my_program
+
+.PHONY: all clean
+
+all: $(TARGET)
+
+$(TARGET): $(OBJS)
+	$(CXX) $(LDFLAGS) $(OBJS) $(LIBS) -o $(TARGET)
 
 %.o: %.cpp
-	$(CC) $(CFLAGS) -c -o $@ $<
+	$(CXX) $(CXXFLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
-	rm -f $(SHARED_LIB) $(OBJS)
+	$(RM) $(OBJS) $(TARGET)
