@@ -2,7 +2,7 @@ CC=g++
 CFLAGS=-Wall -Wextra -std=c++11 -fPIC
 LDFLAGS=-shared
 
-SRCS=anteater_sw.cpp
+SRCS=main.cpp
 OBJS=$(SRCS:.cpp=.o)
 SHARED_LIB=libanteater_sw.so
 
