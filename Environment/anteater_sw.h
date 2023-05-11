@@ -30,6 +30,7 @@ typedef struct{
 
 typedef struct{
     position tt_pos;
+    list<position> *trace;
 } tongue_tip;
 
 typedef struct{
@@ -39,6 +40,7 @@ typedef struct{
     position sprite_position;
     int direction;
     int reward;
+    int speed;
 } sprite;
 
 typedef struct{
